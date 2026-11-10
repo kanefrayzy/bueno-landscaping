@@ -1,0 +1,19 @@
+# Production on the bueno server (/opt/landscaping). The site joins the network of the
+# buenoexoticsny.com project, whose Caddy serves HTTPS for both domains and proxies
+# buenolandscapinginc.com to this container (landscaping:3000). No ports are published.
+
+name: landscaping
+
+services:
+  landscaping:
+    image: bueno-landscaping:latest
+    restart: unless-stopped
+    env_file: .env
+    mem_limit: 384m
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    name: bueno_default
+    external: true

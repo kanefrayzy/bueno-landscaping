@@ -1,0 +1,13 @@
+node_modules
+.next
+out
+deploy
+.env
+.env*.local
+*.tsbuildinfo
+Dockerfile
+.dockerignore
+README.md
+AGENTS.md
+design
+.claude

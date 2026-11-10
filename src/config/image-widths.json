@@ -1,0 +1,391 @@
+{
+  "/images/hero-backyard.webp": {
+    "widths": [
+      384,
+      640,
+      828,
+      1080
+    ],
+    "original": 1408
+  },
+  "/images/og-backyard.jpg": {
+    "widths": [
+      384,
+      640,
+      828,
+      1080
+    ],
+    "original": 1200
+  },
+  "/images/work/arborvitae-side-yard.webp": {
+    "widths": [
+      384,
+      640,
+      828,
+      1080,
+      1440
+    ],
+    "original": 1600
+  },
+  "/images/work/backyard-shed-plantings.webp": {
+    "widths": [
+      384,
+      640
+    ],
+    "original": 692
+  },
+  "/images/work/block-retaining-wall-lighting.webp": {
+    "widths": [
+      384
+    ],
+    "original": 480
+  },
+  "/images/work/boulder-border-bed.webp": {
+    "widths": [
+      384
+    ],
+    "original": 554
+  },
+  "/images/work/boulder-planting-bed.webp": {
+    "widths": [
+      384,
+      640
+    ],
+    "original": 692
+  },
+  "/images/work/boxwood-boulder-bed.webp": {
+    "widths": [
+      384
+    ],
+    "original": 554
+  },
+  "/images/work/checkerboard-patio-seating-wall.webp": {
+    "widths": [
+      384
+    ],
+    "original": 576
+  },
+  "/images/work/checkerboard-paver-patio.webp": {
+    "widths": [
+      384
+    ],
+    "original": 576
+  },
+  "/images/work/curved-paver-walkway.webp": {
+    "widths": [
+      384
+    ],
+    "original": 576
+  },
+  "/images/work/curved-seating-wall-patio-edge.webp": {
+    "widths": [
+      384
+    ],
+    "original": 576
+  },
+  "/images/work/curved-seating-wall.webp": {
+    "widths": [
+      384
+    ],
+    "original": 576
+  },
+  "/images/work/drainage-excavation.webp": {
+    "widths": [
+      384,
+      640
+    ],
+    "original": 692
+  },
+  "/images/work/driveway-paver-border.webp": {
+    "widths": [
+      384
+    ],
+    "original": 554
+  },
+  "/images/work/dry-well-excavation.webp": {
+    "widths": [
+      384,
+      640
+    ],
+    "original": 720
+  },
+  "/images/work/fire-pit-patio-waterfront.webp": {
+    "widths": [
+      384,
+      640
+    ],
+    "original": 720
+  },
+  "/images/work/flagstone-path-granite-edge.webp": {
+    "widths": [
+      384,
+      640
+    ],
+    "original": 720
+  },
+  "/images/work/flagstone-path-side-yard.webp": {
+    "widths": [
+      384,
+      640
+    ],
+    "original": 720
+  },
+  "/images/work/flagstone-patio-sunset.webp": {
+    "widths": [
+      384,
+      640
+    ],
+    "original": 720
+  },
+  "/images/work/flagstone-walkway-planting-beds.webp": {
+    "widths": [
+      384,
+      640
+    ],
+    "original": 692
+  },
+  "/images/work/gazebo-plantings.webp": {
+    "widths": [
+      384,
+      640
+    ],
+    "original": 692
+  },
+  "/images/work/granite-block-edging.webp": {
+    "widths": [
+      384,
+      640
+    ],
+    "original": 720
+  },
+  "/images/work/granite-cobblestone-apron.webp": {
+    "widths": [
+      384,
+      640
+    ],
+    "original": 720
+  },
+  "/images/work/gravel-yard-after.webp": {
+    "widths": [
+      384,
+      640
+    ],
+    "original": 692
+  },
+  "/images/work/gravel-yard-before.webp": {
+    "widths": [
+      384,
+      640
+    ],
+    "original": 692
+  },
+  "/images/work/hydrangea-bed-curved.webp": {
+    "widths": [
+      384,
+      640
+    ],
+    "original": 720
+  },
+  "/images/work/hydrangea-bed-walkway.webp": {
+    "widths": [
+      384,
+      640
+    ],
+    "original": 720
+  },
+  "/images/work/irrigation-valve-stone-wall.webp": {
+    "widths": [
+      384,
+      640
+    ],
+    "original": 720
+  },
+  "/images/work/japanese-maple-planting.webp": {
+    "widths": [
+      384
+    ],
+    "original": 576
+  },
+  "/images/work/lawn-curved-bed-edge.webp": {
+    "widths": [
+      384,
+      640,
+      828,
+      1080,
+      1440
+    ],
+    "original": 1600
+  },
+  "/images/work/maple-planting-fall.webp": {
+    "widths": [
+      384
+    ],
+    "original": 576
+  },
+  "/images/work/natural-stone-steps.webp": {
+    "widths": [
+      384,
+      640
+    ],
+    "original": 692
+  },
+  "/images/work/ornamental-grass-bed.webp": {
+    "widths": [
+      384
+    ],
+    "original": 520
+  },
+  "/images/work/patio-after.webp": {
+    "widths": [
+      384
+    ],
+    "original": 576
+  },
+  "/images/work/patio-before.webp": {
+    "widths": [
+      384
+    ],
+    "original": 576
+  },
+  "/images/work/patio-curved-seating-wall.webp": {
+    "widths": [
+      384
+    ],
+    "original": 576
+  },
+  "/images/work/paver-landing-front-door.webp": {
+    "widths": [
+      384,
+      640
+    ],
+    "original": 692
+  },
+  "/images/work/paver-landing-side-door.webp": {
+    "widths": [
+      384,
+      640
+    ],
+    "original": 692
+  },
+  "/images/work/paver-patio-capped-wall.webp": {
+    "widths": [
+      384
+    ],
+    "original": 576
+  },
+  "/images/work/paver-patio-from-deck.webp": {
+    "widths": [
+      384
+    ],
+    "original": 576
+  },
+  "/images/work/paver-walkway-dark-border.webp": {
+    "widths": [
+      384
+    ],
+    "original": 554
+  },
+  "/images/work/paver-walkway-front-beds.webp": {
+    "widths": [
+      384
+    ],
+    "original": 576
+  },
+  "/images/work/paver-walkway-front-porch.webp": {
+    "widths": [
+      384
+    ],
+    "original": 576
+  },
+  "/images/work/paver-walkway-porch.webp": {
+    "widths": [
+      384
+    ],
+    "original": 576
+  },
+  "/images/work/pool-deck-stepping-pavers.webp": {
+    "widths": [
+      384,
+      640
+    ],
+    "original": 720
+  },
+  "/images/work/pool-patio-gravel-beds.webp": {
+    "widths": [
+      384,
+      640
+    ],
+    "original": 720
+  },
+  "/images/work/retaining-wall-lit-bed.webp": {
+    "widths": [
+      384
+    ],
+    "original": 480
+  },
+  "/images/work/seating-wall-cap.webp": {
+    "widths": [
+      384
+    ],
+    "original": 576
+  },
+  "/images/work/shrubs-along-fence.webp": {
+    "widths": [
+      384,
+      640
+    ],
+    "original": 720
+  },
+  "/images/work/skid-steer-tree-move.webp": {
+    "widths": [
+      384
+    ],
+    "original": 542
+  },
+  "/images/work/sod-lawn-arborvitae.webp": {
+    "widths": [
+      384,
+      640
+    ],
+    "original": 692
+  },
+  "/images/work/sod-lawn-fence-line.webp": {
+    "widths": [
+      384,
+      640
+    ],
+    "original": 692
+  },
+  "/images/work/sod-yard-after.webp": {
+    "widths": [
+      384
+    ],
+    "original": 576
+  },
+  "/images/work/sod-yard-before.webp": {
+    "widths": [
+      384
+    ],
+    "original": 542
+  },
+  "/images/work/sprinkler-valve-box.webp": {
+    "widths": [
+      384,
+      640
+    ],
+    "original": 720
+  },
+  "/images/work/stepping-pavers-crushed-stone.webp": {
+    "widths": [
+      384,
+      640
+    ],
+    "original": 720
+  },
+  "/images/work/weeping-tree-bed.webp": {
+    "widths": [
+      384
+    ],
+    "original": 576
+  }
+}
