@@ -2813,7 +2813,6 @@ textarea.quote-form__control {
 
 .prose table {
   width: 100%;
-  min-width: 500px;
   border-collapse: collapse;
   font-size: 15px;
   line-height: 1.5;

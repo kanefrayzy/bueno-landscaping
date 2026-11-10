@@ -12,9 +12,9 @@ import { ServiceProcess } from '@/components/sections/service-detail/ServiceProc
 import { ServiceWork } from '@/components/sections/service-detail/ServiceWork';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { JsonLd } from '@/components/ui/JsonLd';
-import { postsForService } from '@/config/blog';
 import { getService, services } from '@/config/services';
 import { site } from '@/config/site';
+import { postsForService } from '@/lib/blog';
 import { serviceSchema } from '@/lib/schema';
 import { pageMetadata } from '@/lib/seo';
 
@@ -42,6 +42,7 @@ export default async function ServicePage({ params }: PageProps<'/services/[slug
 
   const path = `/services/${service.slug}`;
   const name = service.heading.replace(/ Services$/, '');
+  const guides = await postsForService(service.slug);
 
   return (
     <>
@@ -68,7 +69,7 @@ export default async function ServicePage({ params }: PageProps<'/services/[slug
       <Areas title={`${name} near Patchogue.`} />
       <Reviews limit={3} />
       <Faq items={service.faq} title={`${name} questions.`} />
-      <BlogPosts posts={postsForService(service.slug)} eyebrow="Guides" title={`${name} tips from our blog.`} variant="compact" />
+      <BlogPosts posts={guides} eyebrow="Guides" title={`${name} tips from our blog.`} variant="compact" />
       <OtherServices currentSlug={service.slug} />
       <QuoteSection title={`Get a free ${name.toLowerCase()} estimate`} defaultService={service.title} />
     </>

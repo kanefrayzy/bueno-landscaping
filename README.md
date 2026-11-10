@@ -36,4 +36,13 @@ All editable content is in `src/config/`:
 - `reviews.ts`: real reviews copied word for word. Never write or edit review text.
 - `blog.ts`: blog posts; the text of each is in `src/content/blog/<slug>.mdx`.
 
+## Blog agent
+
+A scheduled Claude Code agent publishes one post three times a week. It follows `scripts/blog-agent/AGENT.md`, takes topics from `topics.md`, checks the draft with `check.mjs` and sends it to `POST /api/blog/publish` (bearer token `BLOG_PUBLISH_TOKEN` in the server's `.env`; without it the route is a 404). It never commits.
+
+- Published posts are JSON files in a volume on the server (`/data/blog` in the container), not in git. Hand-written posts stay MDX.
+- The server checks every post against `src/lib/blog-rules.mjs` (the same rules `check.mjs` runs), allows one API post per 12 hours, and picks the cover from the work photos (`src/config/blog-covers.ts`).
+- Pages that list posts are revalidated on publish and once after each server start, so new posts show up without a rebuild.
+- Tests: `npm run build && npm run test:blog`.
+
 Rules for all copy: plain and direct, no em dashes, no invented facts (prices, guarantees, licenses, years in business, project counts). Anything that needs the client's confirmation is marked `TODO: confirm with client`.

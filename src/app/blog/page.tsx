@@ -3,7 +3,7 @@ import { PageHeader } from '@/components/sections/page-header/PageHeader';
 import { QuoteSection } from '@/components/sections/quote/QuoteSection';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Container } from '@/components/ui/Container';
-import { posts } from '@/config/blog';
+import { getAllPosts } from '@/lib/blog';
 import { pageMetadata } from '@/lib/seo';
 
 export const metadata = pageMetadata({
@@ -13,7 +13,9 @@ export const metadata = pageMetadata({
   path: '/blog',
 });
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const posts = await getAllPosts();
+
   return (
     <>
       <PageHeader

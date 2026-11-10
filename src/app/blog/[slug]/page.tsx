@@ -9,20 +9,29 @@ import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Container';
 import { Icon } from '@/components/ui/Icon';
 import { JsonLd } from '@/components/ui/JsonLd';
-import { formatPostDate, getPost, posts } from '@/config/blog';
+import { formatPostDate, mdxPosts } from '@/config/blog';
 import { getService } from '@/config/services';
 import { site } from '@/config/site';
+import { getAllPosts, type Post } from '@/lib/blog';
+import { renderMarkdown } from '@/lib/markdown';
 import { blogPostingSchema } from '@/lib/schema';
 import { pageMetadata } from '@/lib/seo';
 
-export const dynamicParams = false;
-
+// MDX posts are built with the site. Posts published through the API are rendered on their
+// first visit and cached, so they go live without a rebuild; unknown slugs are a 404.
 export function generateStaticParams() {
-  return posts.map((post) => ({ slug: post.slug }));
+  return mdxPosts.map((post) => ({ slug: post.slug }));
+}
+
+async function PostBody({ post }: { post: Post }) {
+  if (post.source === 'api') return renderMarkdown(post.body);
+  const { default: Content } = await import(`@/content/blog/${post.slug}.mdx`);
+  return <Content />;
 }
 
 export async function generateMetadata({ params }: PageProps<'/blog/[slug]'>) {
-  const post = getPost((await params).slug);
+  const slug = (await params).slug;
+  const post = (await getAllPosts()).find((candidate) => candidate.slug === slug);
   if (!post) return {};
 
   return pageMetadata({
@@ -35,11 +44,12 @@ export async function generateMetadata({ params }: PageProps<'/blog/[slug]'>) {
 }
 
 export default async function BlogPostPage({ params }: PageProps<'/blog/[slug]'>) {
-  const post = getPost((await params).slug);
+  const slug = (await params).slug;
+  const posts = await getAllPosts();
+  const post = posts.find((candidate) => candidate.slug === slug);
   const service = post && getService(post.service);
   if (!post || !service) notFound();
 
-  const { default: Content } = await import(`@/content/blog/${post.slug}.mdx`);
   const serviceName = service.heading.replace(/ Services$/, '').toLowerCase();
   const morePosts = posts.filter((other) => other.slug !== post.slug).slice(0, 3);
 
@@ -70,7 +80,7 @@ export default async function BlogPostPage({ params }: PageProps<'/blog/[slug]'>
         <section className="article">
           <Container className="article__inner">
             <div className="article__body prose">
-              <Content />
+              <PostBody post={post} />
               {post.faq && <ArticleFaq items={post.faq} />}
             </div>
             <aside className="article__aside" aria-label="Get help with this">

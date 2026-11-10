@@ -1,7 +1,8 @@
 import type { FaqItem } from './services';
 import { getWork, type WorkImage } from './work';
 
-// Each post's text is in src/content/blog/<slug>.mdx. Newest first.
+// Hand-written posts; each one's text is in src/content/blog/<slug>.mdx. Newest first.
+// Posts published by the blog agent live on the server instead (src/lib/blog-store.ts).
 export type BlogPost = {
   slug: string;
   /** H1 and card title. */
@@ -22,7 +23,7 @@ export type BlogPost = {
   faq?: FaqItem[];
 };
 
-export const posts: BlogPost[] = [
+export const mdxPosts: BlogPost[] = [
   {
     slug: 'when-to-turn-sprinklers-on-and-off-long-island',
     title: 'When to Turn Sprinklers On and Off on Long Island',
@@ -164,14 +165,6 @@ export const posts: BlogPost[] = [
     ],
   },
 ];
-
-export function getPost(slug: string) {
-  return posts.find((post) => post.slug === slug);
-}
-
-export function postsForService(serviceSlug: string) {
-  return posts.filter((post) => post.service === serviceSlug);
-}
 
 export function formatPostDate(date: string) {
   return new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(date));

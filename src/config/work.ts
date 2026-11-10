@@ -26,6 +26,10 @@ export const workCategories: { id: WorkCategory; label: string }[] = [
 
 const byId = new Map(workImages.map((image) => [image.id, image]));
 
+export function findWork(id: string): WorkImage | undefined {
+  return byId.get(id);
+}
+
 export function getWork(id: string): WorkImage {
   const image = byId.get(id);
   if (!image) throw new Error(`Unknown work image: ${id}`);

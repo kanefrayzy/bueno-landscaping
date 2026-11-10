@@ -1,20 +1,7 @@
 import type { MDXComponents } from 'mdx/types';
-import Link from 'next/link';
-import type { ComponentPropsWithoutRef } from 'react';
+import { proseComponents } from '@/components/ui/prose';
 
-function Anchor({ href = '', ...props }: ComponentPropsWithoutRef<'a'>) {
-  if (href.startsWith('/') || href.startsWith('#')) return <Link href={href} {...props} />;
-  return <a href={href} target="_blank" rel="noopener" {...props} />;
-}
-
-const components: MDXComponents = {
-  a: Anchor,
-  table: (props) => (
-    <div className="prose__table">
-      <table {...props} />
-    </div>
-  ),
-};
+const components: MDXComponents = proseComponents;
 
 export function useMDXComponents(): MDXComponents {
   return components;

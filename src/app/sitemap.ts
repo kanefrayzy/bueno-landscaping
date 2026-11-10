@@ -1,13 +1,14 @@
 import type { MetadataRoute } from 'next';
-import { posts } from '@/config/blog';
 import { services } from '@/config/services';
+import { getAllPosts } from '@/lib/blog';
+import { STATIC_PATHS } from '@/lib/blog-rules.mjs';
 import { absoluteUrl } from '@/lib/seo';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = ['/', '/services', '/our-work', '/service-areas', '/blog', '/contact', '/privacy'];
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const posts = await getAllPosts();
   const servicePages = services.map((service) => `/services/${service.slug}`);
 
-  const staticEntries: MetadataRoute.Sitemap = [...pages, ...servicePages].map((path) => ({
+  const staticEntries: MetadataRoute.Sitemap = [...STATIC_PATHS, ...servicePages].map((path) => ({
     url: absoluteUrl(path),
     changeFrequency: 'monthly',
     priority: path === '/' ? 1 : path === '/privacy' ? 0.3 : 0.8,

@@ -9,8 +9,8 @@ import { Reviews } from '@/components/sections/reviews/Reviews';
 import { Services } from '@/components/sections/services/Services';
 import { Work } from '@/components/sections/work/Work';
 import { JsonLd } from '@/components/ui/JsonLd';
-import { posts } from '@/config/blog';
 import { homeFaq } from '@/config/home';
+import { getAllPosts } from '@/lib/blog';
 import { pageMetadata } from '@/lib/seo';
 import { localBusinessSchema } from '@/lib/schema';
 
@@ -22,7 +22,9 @@ export const metadata = pageMetadata({
   absoluteTitle: true,
 });
 
-export default function HomePage() {
+export default async function HomePage() {
+  const posts = await getAllPosts();
+
   return (
     <>
       <JsonLd data={localBusinessSchema()} />

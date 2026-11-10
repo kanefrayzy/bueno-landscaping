@@ -23,8 +23,10 @@ docker build --platform linux/amd64 \
   -t "$image" .
 
 echo "Uploading..."
-ssh "$host" "mkdir -p $remote_dir && touch $remote_dir/.env && chmod 600 $remote_dir/.env"
+ssh "$host" "mkdir -p $remote_dir/data/blog && chown 1000:1000 $remote_dir/data/blog && touch $remote_dir/.env && chmod 600 $remote_dir/.env"
 scp -q deploy/docker-compose.yml "$host:$remote_dir/docker-compose.yml"
+scp -q deploy/backup.sh "$host:$remote_dir/backup.sh"
+ssh "$host" "chmod 700 $remote_dir/backup.sh && echo '30 4 * * * root $remote_dir/backup.sh >> /var/log/landscaping-backup.log 2>&1' > /etc/cron.d/landscaping-backup"
 docker save "$image" | gzip | ssh "$host" "gunzip | docker load"
 
 echo "Restarting..."
