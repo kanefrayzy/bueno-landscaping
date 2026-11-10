@@ -22,6 +22,8 @@ const HOMEPAGE_PHOTOS = [
   'paver-walkway-front-beds',
 ];
 const MDX_COVERS = ['sprinkler-valve-box', 'dry-well-excavation', 'paver-patio-capped-wall', 'backyard-shed-plantings'];
+// Photos of the kind that fits a drainage post (drainage jobs are filed with irrigation).
+const DRAINAGE_COVERS = ['sprinkler-valve-box', 'irrigation-valve-stone-wall', 'dry-well-excavation', 'drainage-excavation'];
 
 let dataDir;
 let server;
@@ -186,9 +188,9 @@ test('publishes a valid post, picks a cover and updates every list', async () =>
   first = await response.json();
 
   assert.match(first.url, /\/blog\/why-yard-floods-after-rain$/);
-  assert.notEqual(first.cover.kind, 'irrigation', 'the latest post has an irrigation photo');
+  assert.equal(first.cover.kind, 'irrigation', 'a drainage post gets a drainage or irrigation photo');
   assert.ok(!HOMEPAGE_PHOTOS.includes(first.cover.id), 'cover must not be a homepage photo');
-  assert.ok(!MDX_COVERS.includes(first.cover.id), 'unused photos come before used ones');
+  assert.ok(!MDX_COVERS.includes(first.cover.id), 'photos of the latest posts are not reused');
 
   const stored = await storedFile('why-yard-floods-after-rain');
   assert.equal(stored.cover, first.cover.id);
@@ -223,12 +225,13 @@ test('409 for a slug published through the API', async () => {
   assert.equal(response.status, 409);
 });
 
-test('the next cover is a different kind of photo', async () => {
+test('the next drainage post gets the other unused drainage photo', async () => {
   const response = await publish(validPost('soggy-lawn-after-snowmelt', { title: 'What a Soggy Lawn After Snowmelt Tells You' }));
   assert.equal(response.status, 201);
   const second = await response.json();
+  assert.equal(second.cover.kind, 'irrigation');
   assert.notEqual(second.cover.id, first.cover.id);
-  assert.notEqual(second.cover.kind, first.cover.kind);
+  assert.ok(!MDX_COVERS.includes(second.cover.id));
 });
 
 test('two requests at once publish only one post', async () => {
@@ -239,6 +242,13 @@ test('two requests at once publish only one post', async () => {
     .map((response) => response.status)
     .sort();
   assert.deepEqual(statuses, [201, 429]);
+
+  // Every drainage photo is now on one of the latest posts, so the cover falls back to the
+  // photo unused longest, of a different kind than the latest post's.
+  const { posts } = await (await fetch(`${BASE}/api/blog/posts`)).json();
+  const third = posts.find((post) => post.slug.startsWith('race-check-post'));
+  assert.ok(!DRAINAGE_COVERS.includes(third.cover), `fallback cover ${third.cover}`);
+  assert.ok(!posts.slice(1, 7).some((post) => post.cover === third.cover));
 });
 
 test('Markdown is sanitized: no raw HTML, H1 demoted, outside links open in a new tab', async () => {

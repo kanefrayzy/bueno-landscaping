@@ -40,7 +40,8 @@ You may state only what `src/config/*` says, in its own terms:
 
 - The phone number (631) 394-1668 (call or text), the Patchogue address, the hours from `site.ts`.
 - The services and what each service page says is included. "We" can only do what `services.ts` says the company does.
-- Free estimates, and that photos of the area help (the site says both).
+- Free estimates, and that photos of the area help: they are **texted** to (631) 394-1668. The estimate form takes name, phone, email, town, service and a message; it has no file upload, so never tell readers to send photos through it.
+- How the site works only as it actually works. If you describe a form, a page or a way to reach the company, check it in the code (`src/components/sections/quote/QuoteForm.tsx`, `src/config/site.ts`) first.
 
 You may not state:
 
@@ -52,7 +53,7 @@ You may not state:
 ## 5. Write
 
 - English, US spelling, for a homeowner around Patchogue: "you", concrete, practical. 900 to 1,500 words.
-- No H1 (the page shows the title). Four to seven `##` sections with specific headings; `###` only inside a section.
+- No H1 (the page shows the title). Four to seven `##` sections with specific headings; `###` only inside a section, for something that belongs to it. A heading promises only what its section covers (don't write "and nearby villages" over a section about one village).
 - At most two tables, each with **at most two columns** (a third column falls off a phone screen). Short cells. A list is often better.
 - One post supports **one** service. Link its page (`/services/<slug>`) at least once and the estimate form (`#quote`) at least once. Three to six internal links in all, by path, only to pages that exist (see `paths`, services and posts in `/api/blog/posts`). External links only to the official sources you used.
 - End with one short paragraph that links the service page and `#quote`. The phone number goes in as plain text.

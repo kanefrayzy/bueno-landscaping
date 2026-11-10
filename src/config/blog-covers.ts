@@ -23,6 +23,20 @@ export const coverPool: { image: WorkImage; kind: CoverKind }[] = workImages.fla
   return [{ image, kind: image.category }];
 });
 
+// Kinds of photo that fit a post about each service. Drainage jobs are filed with
+// irrigation, and planting beds with lawn photos.
+export const serviceCoverKinds: Record<string, CoverKind[]> = {
+  'lawn-care': ['lawn'],
+  'planting-and-mulch': ['lawn'],
+  'hedge-and-shrub-trimming': ['lawn'],
+  'spring-and-fall-cleanup': ['lawn'],
+  irrigation: ['irrigation'],
+  drainage: ['irrigation'],
+  hardscape: ['patios', 'walls'],
+  masonry: ['masonry', 'walls'],
+  sheds: ['more'],
+};
+
 export function coverKind(id: string): CoverKind | undefined {
   return coverPool.find((cover) => cover.image.id === id)?.kind;
 }

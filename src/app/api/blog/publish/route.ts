@@ -63,7 +63,7 @@ export async function POST(request: Request) {
     });
     if (!post) return json({ error: 'The post did not pass the checks.', errors }, 422);
 
-    const cover = pickCover(posts);
+    const cover = pickCover(posts, post.service);
     const now = new Date();
     const result = await writeStoredPost({
       ...post,
